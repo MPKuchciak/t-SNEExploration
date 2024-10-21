@@ -80,7 +80,8 @@ images of 28x28 pixels, MNIST is a challenging dataset for visualization
 and pattern recognition, making it ideal for t-SNE.
 
 <figure>
-<img src="mnist_animation_enlarged.gif" alt="MNIST sample of images" />
+<img src="PNG_GIF/mnist_animation_enlarged.gif"
+alt="MNIST sample of images" />
 <figcaption aria-hidden="true">MNIST sample of images</figcaption>
 </figure>
 
@@ -230,29 +231,29 @@ tsne_results_p30_i1000 <- Rtsne(train_images_flat, dims = 2, perplexity = 30, ve
     ##  - point 40000 of 60000
     ##  - point 50000 of 60000
     ##  - point 60000 of 60000
-    ## Done in 331.60 seconds (sparsity = 0.002086)!
+    ## Done in 314.17 seconds (sparsity = 0.002086)!
     ## Learning embedding...
-    ## Iteration 50: error is 118.896811 (50 iterations in 12.60 seconds)
-    ## Iteration 100: error is 118.896811 (50 iterations in 13.06 seconds)
-    ## Iteration 150: error is 118.892813 (50 iterations in 13.44 seconds)
-    ## Iteration 200: error is 109.521719 (50 iterations in 11.02 seconds)
-    ## Iteration 250: error is 103.548045 (50 iterations in 12.61 seconds)
-    ## Iteration 300: error is 4.921023 (50 iterations in 11.14 seconds)
-    ## Iteration 350: error is 4.512190 (50 iterations in 10.34 seconds)
-    ## Iteration 400: error is 4.269992 (50 iterations in 10.30 seconds)
-    ## Iteration 450: error is 4.096157 (50 iterations in 10.99 seconds)
-    ## Iteration 500: error is 3.961477 (50 iterations in 10.84 seconds)
-    ## Iteration 550: error is 3.852517 (50 iterations in 10.95 seconds)
-    ## Iteration 600: error is 3.761633 (50 iterations in 11.40 seconds)
-    ## Iteration 650: error is 3.684040 (50 iterations in 11.01 seconds)
-    ## Iteration 700: error is 3.616261 (50 iterations in 10.96 seconds)
-    ## Iteration 750: error is 3.556745 (50 iterations in 11.35 seconds)
-    ## Iteration 800: error is 3.504050 (50 iterations in 11.66 seconds)
-    ## Iteration 850: error is 3.456746 (50 iterations in 11.67 seconds)
-    ## Iteration 900: error is 3.413664 (50 iterations in 12.02 seconds)
-    ## Iteration 950: error is 3.374273 (50 iterations in 11.93 seconds)
-    ## Iteration 1000: error is 3.337869 (50 iterations in 11.84 seconds)
-    ## Fitting performed in 231.11 seconds.
+    ## Iteration 50: error is 118.896811 (50 iterations in 11.33 seconds)
+    ## Iteration 100: error is 118.896811 (50 iterations in 12.30 seconds)
+    ## Iteration 150: error is 118.892813 (50 iterations in 13.02 seconds)
+    ## Iteration 200: error is 109.521719 (50 iterations in 10.88 seconds)
+    ## Iteration 250: error is 103.548045 (50 iterations in 11.74 seconds)
+    ## Iteration 300: error is 4.921023 (50 iterations in 10.64 seconds)
+    ## Iteration 350: error is 4.512190 (50 iterations in 10.03 seconds)
+    ## Iteration 400: error is 4.269992 (50 iterations in 9.98 seconds)
+    ## Iteration 450: error is 4.096157 (50 iterations in 10.02 seconds)
+    ## Iteration 500: error is 3.961477 (50 iterations in 9.91 seconds)
+    ## Iteration 550: error is 3.852517 (50 iterations in 9.94 seconds)
+    ## Iteration 600: error is 3.761633 (50 iterations in 10.35 seconds)
+    ## Iteration 650: error is 3.684040 (50 iterations in 10.22 seconds)
+    ## Iteration 700: error is 3.616261 (50 iterations in 10.51 seconds)
+    ## Iteration 750: error is 3.556745 (50 iterations in 10.13 seconds)
+    ## Iteration 800: error is 3.504050 (50 iterations in 10.00 seconds)
+    ## Iteration 850: error is 3.456746 (50 iterations in 10.10 seconds)
+    ## Iteration 900: error is 3.413664 (50 iterations in 10.17 seconds)
+    ## Iteration 950: error is 3.374273 (50 iterations in 10.12 seconds)
+    ## Iteration 1000: error is 3.337869 (50 iterations in 10.36 seconds)
+    ## Fitting performed in 211.75 seconds.
 
 ``` r
 dim(train_images)
@@ -262,7 +263,7 @@ dim(train_images)
 
 Additional information, interpreting comments and why PCA?
 
-**Principal Component Analysis (PCA)** is a dimensionality reduction
+***Principal Component Analysis (PCA)*** is a dimensionality reduction
 technique that linearly transforms the original data into a new
 coordinate system, where the greatest variances by any projection of the
 data come to lie on the first coordinates (called principal components).
@@ -282,8 +283,6 @@ lead to better embeddings from t-SNE.
 *Improved Stability*: Starting t-SNE with data that’s already been
 somewhat simplified (but still represents the main structures) can lead
 to more stable and meaningful low-dimensional representations.
-
-Sparsity of 0.002086
 
 *Efficiency*: From a computational standpoint, a sparsity of 0.002086 is
 beneficial because it means the algorithm can efficiently store and
@@ -389,7 +388,7 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
 
 ![](Dimension_reduction_files/figure-gfm/all%20graphs1-1.png)<!-- -->
 
-Graph for perplexity = 30 and iterations = 1000
+**Graph for perplexity = 30 and iterations = 1000**
 
 *Cluster Separation*: Some clusters appear well-separated from others,
 indicating that t-SNE has effectively captured differences between these
@@ -414,8 +413,8 @@ variation in writing style within those digit classes.
 
 ![](Dimension_reduction_files/figure-gfm/all%20graphs2-1.png)<!-- -->
 
-Interpretation of the t-SNE Visualization with Perplexity 100 and
-iterations of 1000
+**Interpretation of the t-SNE Visualization with Perplexity 100 and
+iterations of 1000**
 
 *Cluster Overlap*: Compared to the previous visualization with a
 perplexity of 30, there seems to be more overlap between clusters. This
@@ -439,8 +438,8 @@ particularly those that reside in overlapping regions.
 
 ![](Dimension_reduction_files/figure-gfm/all%20graphs3-1.png)<!-- -->
 
-Interpretation of the t-SNE Visualization with Perplexity 5 and
-iterations of 1000
+**Interpretation of the t-SNE Visualization with Perplexity 5 and
+iterations of 1000**
 
 *Compact Clusters*: The clusters appear more compact and tightly formed
 compared to those with higher perplexity values. This suggests that a
@@ -466,8 +465,8 @@ embedding that captures noise as if it were a significant structure.
 
 ![](Dimension_reduction_files/figure-gfm/all%20graphs4-1.png)<!-- -->
 
-Interpretation of the t-SNE Visualization with Perplexity 30 and
-Iterations 2000
+**Interpretation of the t-SNE Visualization with Perplexity 30 and
+Iterations 2000**
 
 *Well-Formed Clusters*: The clusters for each digit appear well-formed
 and mostly distinct from one another. This indicates that t-SNE with
@@ -497,8 +496,8 @@ atypical style or digits that share features with multiple categories.
 
 ![](Dimension_reduction_files/figure-gfm/all%20graphs5-1.png)<!-- -->
 
-Interpretation of the t-SNE Visualization with Perplexity 30 and
-Iterations 100
+**Interpretation of the t-SNE Visualization with Perplexity 30 and
+Iterations 100**
 
 *Underdeveloped Clusters*: The clusters appear less distinct and less
 separated from one another. This is indicative of an under-optimized

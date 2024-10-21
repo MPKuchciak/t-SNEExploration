@@ -69,7 +69,7 @@ test_labels <- mnist$test$y
 dim(train_images)
 ```
 
-![MNIST sample of images](mnist_animation_enlarged.gif)
+![MNIST sample of images](PNG_GIF/mnist_animation_enlarged.gif)
 
 ___
 
@@ -221,15 +221,13 @@ dim(train_images)
 
 Additional information, interpreting comments and why PCA? 
 
-**Principal Component Analysis (PCA)** is a dimensionality reduction technique that linearly transforms the original data into a new coordinate system, where the greatest variances by any projection of the data come to lie on the first coordinates (called principal components). The key reasons for performing PCA before t-SNE are:
+***Principal Component Analysis (PCA)*** is a dimensionality reduction technique that linearly transforms the original data into a new coordinate system, where the greatest variances by any projection of the data come to lie on the first coordinates (called principal components). The key reasons for performing PCA before t-SNE are:
 
 *Dimensionality Reduction*: PCA reduces the dimensionality of the data, focusing on the components that capture the most variance in the data. This reduction is beneficial because t-SNE is computationally expensive and can be slow on very high-dimensional data. By reducing the dimensionality first, t-SNE can run more efficiently.
 
 *Noise Reduction*: PCA can help remove noise by discarding components that capture little variance, which might represent random fluctuations in the data. This cleaner, more concise representation of the data can lead to better embeddings from t-SNE.
 
 *Improved Stability*: Starting t-SNE with data that's already been somewhat simplified (but still represents the main structures) can lead to more stable and meaningful low-dimensional representations.
-
-Sparsity of 0.002086
 
 *Efficiency*: From a computational standpoint, a sparsity of 0.002086 is beneficial because it means the algorithm can efficiently store and process the similarity matrix, taking advantage of sparse matrix techniques to speed up calculations and reduce memory usage.
 
@@ -283,7 +281,9 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
 
 ```
 
-Graph for perplexity = 30 and iterations = 1000
+**Graph for perplexity = 30 and iterations = 1000**
+
+
 
 *Cluster Separation*: Some clusters appear well-separated from others, indicating that t-SNE has effectively captured differences between these digit classes. For example, the cluster representing the digit '0' is quite distinct and separate from the others.
 
@@ -305,7 +305,9 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
 
 ```
 
-Interpretation of the t-SNE Visualization with Perplexity 100 and iterations of 1000
+**Interpretation of the t-SNE Visualization with Perplexity 100 and iterations of 1000**
+
+
 
 *Cluster Overlap*: Compared to the previous visualization with a perplexity of 30, there seems to be more overlap between clusters. This might be an indication that the higher perplexity value is causing the algorithm to consider more global aspects of the data, potentially at the expense of local neighborhood preservation.
 
@@ -327,7 +329,9 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
 
 ```
 
-Interpretation of the t-SNE Visualization with Perplexity 5 and iterations of 1000
+**Interpretation of the t-SNE Visualization with Perplexity 5 and iterations of 1000**
+
+
 
 *Compact Clusters*: The clusters appear more compact and tightly formed compared to those with higher perplexity values. This suggests that a lower perplexity emphasizes local structures and relationships more strongly, causing points to cluster closely around their nearest neighbors.
 
@@ -349,7 +353,9 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
 
 ```
 
-Interpretation of the t-SNE Visualization with Perplexity 30 and Iterations 2000
+**Interpretation of the t-SNE Visualization with Perplexity 30 and Iterations 2000**
+
+
 
 *Well-Formed Clusters*: The clusters for each digit appear well-formed and mostly distinct from one another. This indicates that t-SNE with these parameters is effectively capturing the local groupings within the data.
 
@@ -373,7 +379,9 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
 
 ```
 
-Interpretation of the t-SNE Visualization with Perplexity 30 and Iterations 100
+**Interpretation of the t-SNE Visualization with Perplexity 30 and Iterations 100**
+
+
 
 *Underdeveloped Clusters*: The clusters appear less distinct and less separated from one another. This is indicative of an under-optimized t-SNE process where the algorithm has not run long enough to clearly distinguish the digit classes.
 
@@ -413,7 +421,7 @@ t-SNE excels at preserving local distances between data points, making it partic
 The core of t-SNE's effectiveness lies in its cost function, the Kullback–Leibler (KL) divergence, which measures the difference between two probability distributions. t-SNE minimizes the KL divergence between the probability distribution of pairs in the high-dimensional space and the corresponding distribution in the low-dimensional space. This process ensures that the low-dimensional embedding reflects the similarities between points as accurately as possible, given the dimensional reduction.
 
 The KL divergence value gives you an idea of how well the low-dimensional representation approximates the high-dimensional data's probability distribution. Lower values indicate a closer approximation, but it's essential to balance this with visual inspection of the embedding to ensure meaningful cluster separation and data representation. 
-```{r xd, echo=FALSE}
+```{r final_res, echo=FALSE}
 
 # Ensure the Rtsne library is loaded
 library(Rtsne)
