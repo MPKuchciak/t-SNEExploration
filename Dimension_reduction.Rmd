@@ -1,43 +1,26 @@
 ---
+
 title: "T-SNE: A Dimensionality Reduction Technique Exploration"
 author: "Maciej Kuchciak"
 date: "January 2024"
 output: 
   github_document:
     toc: true
-    toc_depth: 3
+    toc_depth: 4
     fig_width: 7
     fig_height: 5
     dev: 'png'
+  html_document:
+    theme: united   # or another theme like 'cerulean', 'cosmo', etc.
     
 ---
-
-___
-
-- Introduction
-  - Overview of dimensionality reduction in unsupervised learning
-  - Significance of t-SNE
-- Methodology
-  - Selection of dataset
-  - Step by step t-SNE
-  - Application of t-SNE
-    - Hyperparameter Tuning in t-SNE
-- Technical Insights
-  - Distance Preservation in t-SNE
-  - Understanding the Cost Function: Kullback–Leibler Divergence
-  - Scaling and Optimization Challenges
-- Practical Application Tips
-  - Data Preprocessing for t-SNE
-  - Choosing Hyperparameters for t-SNE
-- Challenges and Limitations of t-SNE
-- Conclusion
 
 ___
 
 
 ## Introduction
 
-___
+
 
 ### Overview of dimensionality reduction in unsupervised learning
 
@@ -59,17 +42,22 @@ ___
 The MNIST dataset was used as a source of data for this research. It is a large database of handwritten digits,  It is a large database of handwritten digits. It was chosen for this study due to its complexity and high dimensionality. With 60,000 training and 10,000 test grayscale images of 28x28 pixels, MNIST is a challenging dataset for visualization and pattern recognition, making it ideal for t-SNE.
 
 ```{r setup of loading, include=FALSE}
+
 # Loading in datasets
 if (!requireNamespace("keras", quietly = TRUE)) install.packages("keras")
 library(keras)
-#install_keras()
+# install_keras()
 
 options(width=1000)
 options(digits=3)
 options(scippen=999)
 par(mai=c(.001,.001,.001,.001),mar=c(.001,.001,.001,.001),oma=c(.001,.001,.001,.001))
 
+# setting up seed
 set.seed(420)
+
+
+
 ```
 
 ```{r loading dataset, include=FALSE}
@@ -103,7 +91,7 @@ ___
 For each pair of points \(x_i\) and \(x_j\), compute the conditional probability \(p_{j|i}\) that \(x_i\) would pick \(x_j\) as its neighbor. 
 
 $$
-p_{j|i} = \frac{\exp(-||x_i - x_j||^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-||x_i - x_k||^2 / 2\sigma_i^2)}
+p_{j|i} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
 $$
 
 - \(x_i, x_j\): Data points in the original high-dimensional space.
@@ -126,7 +114,7 @@ $$
 Use a similar probability distribution with a Student-t distribution in the low-dimensional space.
 
 $$
-q_{ij} = \frac{(1 + ||y_i - y_j||^2)^{-1}}{\sum_{k \neq l}(1 + ||y_k - y_l||^2)^{-1}}
+q_{ij} = \frac{(1 + \|y_i - y_j\|^2)^{-1}}{\sum_{k \neq l}(1 + \|y_k - y_l\|^2)^{-1}}
 $$
 
 - \(y_i, y_j\): Data points in the low-dimensional space, corresponding to \(x_i\) and \(x_j\).
@@ -137,7 +125,7 @@ $$
 Minimize the Kullback–Leibler divergence between the high-dimensional and low-dimensional probability distributions.
 
 $$
-KL(P||Q) = \sum_{i \neq j} p_{ij} \log \frac{p_{ij}}{q_{ij}}
+KL(P\|Q) = \sum_{i \neq j} p_{ij} \log \frac{p_{ij}}{q_{ij}}
 $$
 
 - \(KL(P||Q)\): The Kullback–Leibler divergence, is a measure of how probability distribution of one probability distribution differs from a second. In the context of t-SNE, it quantifies the difference between the high-dimensional pairwise similarities (\(P\)) and their low-dimensional counterparts (\(Q\)).
@@ -234,26 +222,26 @@ train_images_flat <- train_images_flat / 255
 tsne_results_p30_i100 <- Rtsne(train_images_flat, dims = 2, perplexity = 5, verbose = TRUE, max_iter = 100)
 dim(train_images)
 ```
+
 Additional information, interpreting comments and why PCA? 
 
-Principal Component Analysis (PCA) is a dimensionality reduction technique that linearly transforms the original data into a new coordinate system, where the greatest variances by any projection of the data come to lie on the first coordinates (called principal components). The key reasons for performing PCA before t-SNE are:
+**Principal Component Analysis (PCA)** is a dimensionality reduction technique that linearly transforms the original data into a new coordinate system, where the greatest variances by any projection of the data come to lie on the first coordinates (called principal components). The key reasons for performing PCA before t-SNE are:
 
-Dimensionality Reduction: PCA reduces the dimensionality of the data, focusing on the components that capture the most variance in the data. This reduction is beneficial because t-SNE is computationally expensive and can be slow on very high-dimensional data. By reducing the dimensionality first, t-SNE can run more efficiently.
+*Dimensionality Reduction*: PCA reduces the dimensionality of the data, focusing on the components that capture the most variance in the data. This reduction is beneficial because t-SNE is computationally expensive and can be slow on very high-dimensional data. By reducing the dimensionality first, t-SNE can run more efficiently.
 
-Noise Reduction: PCA can help remove noise by discarding components that capture little variance, which might represent random fluctuations in the data. This cleaner, more concise representation of the data can lead to better embeddings from t-SNE.
+*Noise Reduction*: PCA can help remove noise by discarding components that capture little variance, which might represent random fluctuations in the data. This cleaner, more concise representation of the data can lead to better embeddings from t-SNE.
 
-Improved Stability: Starting t-SNE with data that's already been somewhat simplified (but still represents the main structures) can lead to more stable and meaningful low-dimensional representations.
+*Improved Stability*: Starting t-SNE with data that's already been somewhat simplified (but still represents the main structures) can lead to more stable and meaningful low-dimensional representations.
 
 Sparsity of 0.002086
 
-Efficiency: From a computational standpoint, a sparsity of 0.002086 is beneficial because it means the algorithm can efficiently store and process the similarity matrix, taking advantage of sparse matrix techniques to speed up calculations and reduce memory usage.
+*Efficiency*: From a computational standpoint, a sparsity of 0.002086 is beneficial because it means the algorithm can efficiently store and process the similarity matrix, taking advantage of sparse matrix techniques to speed up calculations and reduce memory usage.
 
-Data Structure: This level of sparsity suggests that, in the high-dimensional space, most data points are not closely related to most other points, at least within the context of the Gaussian kernels used by t-SNE. It's a typical scenario for high-dimensional data, where only nearby points (in terms of Euclidean distance) contribute significantly to each other's local similarity measure.
+*Data Structure*: This level of sparsity suggests that, in the high-dimensional space, most data points are not closely related to most other points, at least within the context of the Gaussian kernels used by t-SNE. It's a typical scenario for high-dimensional data, where only nearby points (in terms of Euclidean distance) contribute significantly to each other's local similarity measure.
 
 In the context of using t-SNE for dimensionality reduction and visualization, a sparsity value of 0.002086 is typical for high-dimensional datasets and reflects the efficient computational strategy used by the algorithm. 
 
-
-
+___
 
 #### Hyperparameter Tuning in t-SNE
 
@@ -283,7 +271,10 @@ Systematic experimentation, guided by visual and quantitative assessments, is th
 Below are few example of how perplexity and number of iterations changes its behaviour:
 
 One thing to mention before as it applies to every graph:
-*Distinct Clusters*: The visualization displays distinct clusters of data points, each representing one of the ten digit classes (0 through 9) in the MNIST dataset. These clusters are color-coded for clarity.
+
+*Distinct Clusters*: The visualization displays distinct clusters of data points, each representing one of the ten digit classes (0 through 9) in the MNIST dataset. 
+These clusters are color-coded for clarity.
+
 ```{r all graphs1, echo=TRUE}
 
 library(ggplot2)
@@ -295,6 +286,7 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
   labs(title = "MNIST Digits Visualized via t-SNE p 30 i 1000", x = "t-SNE Dimension 1", y = "t-SNE Dimension 2", color = "Digit Label")
 
 ```
+
 Graph for perplexity = 30 and iterations = 1000
 
 *Cluster Separation*: Some clusters appear well-separated from others, indicating that t-SNE has effectively captured differences between these digit classes. For example, the cluster representing the digit '0' is quite distinct and separate from the others.
@@ -316,6 +308,9 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
   labs(title = "MNIST Digits Visualized via t-SNE p 100 i 1000", x = "t-SNE Dimension 1", y = "t-SNE Dimension 2", color = "Digit Label")
 
 ```
+
+Interpretation of the t-SNE Visualization with Perplexity 100 and iterations of 1000
+
 *Cluster Overlap*: Compared to the previous visualization with a perplexity of 30, there seems to be more overlap between clusters. This might be an indication that the higher perplexity value is causing the algorithm to consider more global aspects of the data, potentially at the expense of local neighborhood preservation.
 
 *Spread of Clusters*: The clusters are more spread out across the plot, which can be a result of the higher perplexity leading to a broader view of neighborhood relationships. Each point is considering more points as its neighbors, which can lead to a less tight clustering.
@@ -335,6 +330,7 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
   labs(title = "MNIST Digits Visualized via t-SNE p 5 i 1000", x = "t-SNE Dimension 1", y = "t-SNE Dimension 2", color = "Digit Label")
 
 ```
+
 Interpretation of the t-SNE Visualization with Perplexity 5 and iterations of 1000
 
 *Compact Clusters*: The clusters appear more compact and tightly formed compared to those with higher perplexity values. This suggests that a lower perplexity emphasizes local structures and relationships more strongly, causing points to cluster closely around their nearest neighbors.
@@ -356,6 +352,7 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
   labs(title = "MNIST Digits Visualized via t-SNE p 30 i 2000", x = "t-SNE Dimension 1", y = "t-SNE Dimension 2", color = "Digit Label")
 
 ```
+
 Interpretation of the t-SNE Visualization with Perplexity 30 and Iterations 2000
 
 *Well-Formed Clusters*: The clusters for each digit appear well-formed and mostly distinct from one another. This indicates that t-SNE with these parameters is effectively capturing the local groupings within the data.
@@ -379,6 +376,7 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
   labs(title = "MNIST Digits Visualized via t-SNE p 30 i 100", x = "t-SNE Dimension 1", y = "t-SNE Dimension 2", color = "Digit Label")
 
 ```
+
 Interpretation of the t-SNE Visualization with Perplexity 30 and Iterations 100
 
 *Underdeveloped Clusters*: The clusters appear less distinct and less separated from one another. This is indicative of an under-optimized t-SNE process where the algorithm has not run long enough to clearly distinguish the digit classes.
@@ -404,7 +402,11 @@ Decreasing iterations below a certain threshold results in an unstable and uncle
 
 ___
 
+
+
 ## Technical Insights
+
+
 
 ### Distance Preservation in t-SNE
 
@@ -434,7 +436,11 @@ The KL divergence is a relative measure, meaning its interpretation depends on t
 
 Despite its advantages, t-SNE faces scalability issues. The complexity of the algorithm increases significantly with the size of the dataset, making it challenging to apply t-SNE directly to very large datasets. Various optimization strategies, such as the Barnes-Hut approximation, have been developed to address these challenges, allowing t-SNE to be more computationally efficient while somewhat sacrificing accuracy.
 
+
+
 ## Practical Application Tips
+
+
 
 ### Data Preprocessing for t-SNE
 
@@ -467,4 +473,6 @@ Due to its stochastic nature and sensitivity to hyperparameters, reproducing t-S
 
 ## Conclusion
 
-Dimensionality reduction techniques like t-SNE are essential for simplifying high-dimensional data, allowing researchers and analysts to visualize and understand complex data structures effectively. By carefully pre-processing and selecting appropriate hyperparameters, t-SNE can transform large datasets into more manageable two- or three-dimensional representations. This helps in revealing underlying patterns and relationships. However, it is important to keep in mind the limitations of dimensionality reduction methods while interpreting these visualizations. To obtain a comprehensive understanding of the dataset, it is also necessary to use other analytical tools alongside t-SNE. In conclusion, t-SNE is a powerful tool in the dimensionality reduction wide range of tools, which can aid significantly in exploratory data analysis.
+Dimensionality reduction techniques like t-SNE are essential for simplifying high-dimensional data, allowing researchers and analysts to visualize and understand complex data structures effectively. By carefully pre-processing and selecting appropriate hyperparameters, t-SNE can transform large datasets into more manageable two- or three-dimensional representations. This helps in revealing underlying patterns and relationships. However, it is important to keep in mind the limitations of dimensionality reduction methods while interpreting these visualizations. To obtain a comprehensive understanding of the dataset, it is also necessary to use other analytical tools alongside t-SNE. 
+
+In conclusion, t-SNE is a powerful tool in the dimensionality reduction wide range of tools, which can aid significantly in exploratory data analysis.
