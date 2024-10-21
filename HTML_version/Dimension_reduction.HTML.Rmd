@@ -1,17 +1,27 @@
 ---
-title: "T-SNE: A Dimensionality Reduction Technique Exploration"
+  title: "T-SNE: A Dimensionality Reduction Technique Exploration"
 author: "Maciej Kuchciak"
 date: "January 2024"
 output: 
-  github_document:
-    toc: true
-    toc_depth: 4
-    fig_width: 7
-    fig_height: 5
-    dev: 'png'
+  html_document:
+  toc: true
+toc_float: 
+  collapsed: true
+smooth_scroll: true
+toc_depth: 3
+number_sections: False
+mathjax: "default"
+theme: readable
+df_print: paged
+fig_width: 7
+fig_height: 5
+fig_caption: true
+dev: 'png'
+dpi: 300
+css: styles.css
 ---
-
-___
+  
+  ___
 
 
 ## Introduction
@@ -87,10 +97,10 @@ ___
 For each pair of points \(x_i\) and \(x_j\), compute the conditional probability \(p_{j|i}\) that \(x_i\) would pick \(x_j\) as its neighbor. 
 
 $$
-p_{j|i} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
+  p_{j|i} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
 $$
-
-- \(x_i, x_j\): Data points in the original high-dimensional space.
+  
+  - \(x_i, x_j\): Data points in the original high-dimensional space.
 - \(p_{j|i}\): Conditional probability that point \(x_i\) would pick \(x_j\) as its neighbor, based on their distance and the density of points around \(x_i\).
 - \(\sigma_i\): The standard deviation of the Gaussian distribution centered on \(x_i\), adjusted for each point to maintain a consistent perplexity across the dataset.
 
@@ -99,10 +109,10 @@ $$
 Define the joint probability \(p_{ij}\) as the symmetrized conditional probabilities.
 
 $$
-p_{ij} = \frac{p_{j|i} + p_{i|j}}{2N}
+  p_{ij} = \frac{p_{j|i} + p_{i|j}}{2N}
 $$
-
-- \(p_{ij}\): The joint probability that points \(x_i\) and \(x_j\) pick each other as neighbors. It's symmetrized to ensure that the relationship is mutual, thereby stabilizing the embedding.
+  
+  - \(p_{ij}\): The joint probability that points \(x_i\) and \(x_j\) pick each other as neighbors. It's symmetrized to ensure that the relationship is mutual, thereby stabilizing the embedding.
 - \(N\): Total number of points in the dataset, used for normalization.
 
 #### **Step 3**: Compute Pairwise Similarities in Low-Dimensional Space
@@ -459,13 +469,13 @@ t-SNE is excellent at revealing local structures and clusters but does not prese
 The algorithm tends to expand dense clusters and contract sparse ones, which can sometimes exaggerate separations between groups.
 
 **Scalability and Computational Efficiency**
-t-SNE can be computationally intensive, particularly on large datasets. The Barnes-Hut approximation improves efficiency by approximating long-range interactions and reducing complexity, but scalability remains a challenge for very large datasets.
+  t-SNE can be computationally intensive, particularly on large datasets. The Barnes-Hut approximation improves efficiency by approximating long-range interactions and reducing complexity, but scalability remains a challenge for very large datasets.
 
 **The Crowding Problem and Dimensionality Curse**
-The "crowding problem" describes a situation where, in reducing dimensions, t-SNE tends to squeeze together points that are not necessarily close in the high-dimensional space. This is related to the curse of dimensionality, where distances in high-dimensional spaces become less meaningful, making it hard for any low-dimensional representation to perfectly capture high-dimensional distances.
+  The "crowding problem" describes a situation where, in reducing dimensions, t-SNE tends to squeeze together points that are not necessarily close in the high-dimensional space. This is related to the curse of dimensionality, where distances in high-dimensional spaces become less meaningful, making it hard for any low-dimensional representation to perfectly capture high-dimensional distances.
 
 **Difficulty in Reproducing Results**
-Due to its stochastic nature and sensitivity to hyperparameters, reproducing t-SNE results can be difficult without careful documentation of parameter settings and random seeds.
+  Due to its stochastic nature and sensitivity to hyperparameters, reproducing t-SNE results can be difficult without careful documentation of parameter settings and random seeds.
 
 ## Conclusion
 

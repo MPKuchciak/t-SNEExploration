@@ -1,7 +1,3 @@
-T-SNE: A Dimensionality Reduction Technique Exploration
-================
-Maciej Kuchciak
-January 2024
 
 - [Introduction](#introduction)
   - [Overview of dimensionality reduction in unsupervised
@@ -11,7 +7,17 @@ January 2024
   - [Selection of dataset](#selection-of-dataset)
   - [Understanding t-SNE](#understanding-t-sne)
   - [Step-by-Step t-SNE Process](#step-by-step-t-sne-process)
+    - [**Step 1**: Compute Pairwise Similarities in High-Dimensional
+      Space](#step-1-compute-pairwise-similarities-in-high-dimensional-space)
+    - [**Step 2**: Symmetrize the Probability
+      Distribution](#step-2-symmetrize-the-probability-distribution)
+    - [**Step 3**: Compute Pairwise Similarities in Low-Dimensional
+      Space](#step-3-compute-pairwise-similarities-in-low-dimensional-space)
+    - [**Step 4**: Minimize the Kullback–Leibler
+      Divergence](#step-4-minimize-the-kullbackleibler-divergence)
   - [Application of t-SNE](#application-of-t-sne)
+    - [Hyperparameter Tuning in t-SNE](#hyperparameter-tuning-in-t-sne)
+    - [Summary](#summary)
 - [Technical Insights](#technical-insights)
   - [Distance Preservation in t-SNE](#distance-preservation-in-t-sne)
   - [Understanding the Cost Function: Kullback–Leibler
@@ -28,29 +34,16 @@ January 2024
 
 ------------------------------------------------------------------------
 
-- Introduction
-  - Overview of dimensionality reduction in unsupervised learning
-  - Significance of t-SNE
-- Methodology
-  - Selection of dataset
-  - Step by step t-SNE
-  - Application of t-SNE
-    - Hyperparameter Tuning in t-SNE
-- Technical Insights
-  - Distance Preservation in t-SNE
-  - Understanding the Cost Function: Kullback–Leibler Divergence
-  - Scaling and Optimization Challenges
-- Practical Application Tips
-  - Data Preprocessing for t-SNE
-  - Choosing Hyperparameters for t-SNE
-- Challenges and Limitations of t-SNE
-- Conclusion
+title: “T-SNE: A Dimensionality Reduction Technique Exploration” author:
+“Maciej Kuchciak” date: “January 2024” output: github_document: toc:
+true toc_depth: 4 fig_width: 7 fig_height: 5 dev: ‘png’ html_document:
+theme: united \# or another theme like ‘cerulean’, ‘cosmo’, etc.
+
+------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
 ## Introduction
-
-------------------------------------------------------------------------
 
 ### Overview of dimensionality reduction in unsupervised learning
 
@@ -116,7 +109,7 @@ For each pair of points $x_i$ and $x_j$, compute the conditional
 probability $p_{j|i}$ that $x_i$ would pick $x_j$ as its neighbor.
 
 $$
-p_{j|i} = \frac{\exp(-||x_i - x_j||^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-||x_i - x_k||^2 / 2\sigma_i^2)}
+p_{j|i} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
 $$
 
 - $x_i, x_j$: Data points in the original high-dimensional space.
@@ -147,7 +140,7 @@ Use a similar probability distribution with a Student-t distribution in
 the low-dimensional space.
 
 $$
-q_{ij} = \frac{(1 + ||y_i - y_j||^2)^{-1}}{\sum_{k \neq l}(1 + ||y_k - y_l||^2)^{-1}}
+q_{ij} = \frac{(1 + \|y_i - y_j\|^2)^{-1}}{\sum_{k \neq l}(1 + \|y_k - y_l\|^2)^{-1}}
 $$
 
 - $y_i, y_j$: Data points in the low-dimensional space, corresponding to
@@ -163,7 +156,7 @@ Minimize the Kullback–Leibler divergence between the high-dimensional
 and low-dimensional probability distributions.
 
 $$
-KL(P||Q) = \sum_{i \neq j} p_{ij} \log \frac{p_{ij}}{q_{ij}}
+KL(P\|Q) = \sum_{i \neq j} p_{ij} \log \frac{p_{ij}}{q_{ij}}
 $$
 
 - $KL(P||Q)$: The Kullback–Leibler divergence, is a measure of how
@@ -242,29 +235,29 @@ tsne_results_p30_i1000 <- Rtsne(train_images_flat, dims = 2, perplexity = 30, ve
     ##  - point 40000 of 60000
     ##  - point 50000 of 60000
     ##  - point 60000 of 60000
-    ## Done in 360.78 seconds (sparsity = 0.002086)!
+    ## Done in 368.91 seconds (sparsity = 0.002086)!
     ## Learning embedding...
-    ## Iteration 50: error is 118.896811 (50 iterations in 13.25 seconds)
-    ## Iteration 100: error is 118.896811 (50 iterations in 14.16 seconds)
-    ## Iteration 150: error is 118.892813 (50 iterations in 14.31 seconds)
-    ## Iteration 200: error is 109.521719 (50 iterations in 12.81 seconds)
-    ## Iteration 250: error is 103.548045 (50 iterations in 13.93 seconds)
-    ## Iteration 300: error is 4.921023 (50 iterations in 12.37 seconds)
-    ## Iteration 350: error is 4.512190 (50 iterations in 11.08 seconds)
-    ## Iteration 400: error is 4.269992 (50 iterations in 11.22 seconds)
-    ## Iteration 450: error is 4.096157 (50 iterations in 11.33 seconds)
-    ## Iteration 500: error is 3.961477 (50 iterations in 11.25 seconds)
-    ## Iteration 550: error is 3.852517 (50 iterations in 11.79 seconds)
-    ## Iteration 600: error is 3.761633 (50 iterations in 11.30 seconds)
-    ## Iteration 650: error is 3.684040 (50 iterations in 11.59 seconds)
-    ## Iteration 700: error is 3.616261 (50 iterations in 11.69 seconds)
-    ## Iteration 750: error is 3.556745 (50 iterations in 11.69 seconds)
-    ## Iteration 800: error is 3.504050 (50 iterations in 11.73 seconds)
-    ## Iteration 850: error is 3.456746 (50 iterations in 11.51 seconds)
-    ## Iteration 900: error is 3.413664 (50 iterations in 11.77 seconds)
-    ## Iteration 950: error is 3.374273 (50 iterations in 11.56 seconds)
-    ## Iteration 1000: error is 3.337869 (50 iterations in 11.52 seconds)
-    ## Fitting performed in 241.83 seconds.
+    ## Iteration 50: error is 118.896811 (50 iterations in 13.73 seconds)
+    ## Iteration 100: error is 118.896811 (50 iterations in 16.70 seconds)
+    ## Iteration 150: error is 118.892813 (50 iterations in 17.33 seconds)
+    ## Iteration 200: error is 109.521719 (50 iterations in 14.66 seconds)
+    ## Iteration 250: error is 103.548045 (50 iterations in 16.40 seconds)
+    ## Iteration 300: error is 4.921023 (50 iterations in 12.52 seconds)
+    ## Iteration 350: error is 4.512190 (50 iterations in 11.58 seconds)
+    ## Iteration 400: error is 4.269992 (50 iterations in 11.78 seconds)
+    ## Iteration 450: error is 4.096157 (50 iterations in 12.23 seconds)
+    ## Iteration 500: error is 3.961477 (50 iterations in 12.55 seconds)
+    ## Iteration 550: error is 3.852517 (50 iterations in 11.13 seconds)
+    ## Iteration 600: error is 3.761633 (50 iterations in 11.11 seconds)
+    ## Iteration 650: error is 3.684040 (50 iterations in 11.06 seconds)
+    ## Iteration 700: error is 3.616261 (50 iterations in 11.17 seconds)
+    ## Iteration 750: error is 3.556745 (50 iterations in 11.06 seconds)
+    ## Iteration 800: error is 3.504050 (50 iterations in 10.93 seconds)
+    ## Iteration 850: error is 3.456746 (50 iterations in 11.27 seconds)
+    ## Iteration 900: error is 3.413664 (50 iterations in 11.12 seconds)
+    ## Iteration 950: error is 3.374273 (50 iterations in 11.14 seconds)
+    ## Iteration 1000: error is 3.337869 (50 iterations in 11.17 seconds)
+    ## Fitting performed in 250.63 seconds.
 
 ``` r
 dim(train_images)
@@ -274,35 +267,35 @@ dim(train_images)
 
 Additional information, interpreting comments and why PCA?
 
-Principal Component Analysis (PCA) is a dimensionality reduction
+**Principal Component Analysis (PCA)** is a dimensionality reduction
 technique that linearly transforms the original data into a new
 coordinate system, where the greatest variances by any projection of the
 data come to lie on the first coordinates (called principal components).
 The key reasons for performing PCA before t-SNE are:
 
-Dimensionality Reduction: PCA reduces the dimensionality of the data,
+*Dimensionality Reduction*: PCA reduces the dimensionality of the data,
 focusing on the components that capture the most variance in the data.
 This reduction is beneficial because t-SNE is computationally expensive
 and can be slow on very high-dimensional data. By reducing the
 dimensionality first, t-SNE can run more efficiently.
 
-Noise Reduction: PCA can help remove noise by discarding components that
-capture little variance, which might represent random fluctuations in
-the data. This cleaner, more concise representation of the data can lead
-to better embeddings from t-SNE.
+*Noise Reduction*: PCA can help remove noise by discarding components
+that capture little variance, which might represent random fluctuations
+in the data. This cleaner, more concise representation of the data can
+lead to better embeddings from t-SNE.
 
-Improved Stability: Starting t-SNE with data that’s already been
+*Improved Stability*: Starting t-SNE with data that’s already been
 somewhat simplified (but still represents the main structures) can lead
 to more stable and meaningful low-dimensional representations.
 
 Sparsity of 0.002086
 
-Efficiency: From a computational standpoint, a sparsity of 0.002086 is
+*Efficiency*: From a computational standpoint, a sparsity of 0.002086 is
 beneficial because it means the algorithm can efficiently store and
 process the similarity matrix, taking advantage of sparse matrix
 techniques to speed up calculations and reduce memory usage.
 
-Data Structure: This level of sparsity suggests that, in the
+*Data Structure*: This level of sparsity suggests that, in the
 high-dimensional space, most data points are not closely related to most
 other points, at least within the context of the Gaussian kernels used
 by t-SNE. It’s a typical scenario for high-dimensional data, where only
@@ -313,6 +306,8 @@ In the context of using t-SNE for dimensionality reduction and
 visualization, a sparsity value of 0.002086 is typical for
 high-dimensional datasets and reflects the efficient computational
 strategy used by the algorithm.
+
+------------------------------------------------------------------------
 
 #### Hyperparameter Tuning in t-SNE
 
@@ -381,10 +376,11 @@ goals.
 Below are few example of how perplexity and number of iterations changes
 its behaviour:
 
-One thing to mention before as it applies to every graph: *Distinct
-Clusters*: The visualization displays distinct clusters of data points,
-each representing one of the ten digit classes (0 through 9) in the
-MNIST dataset. These clusters are color-coded for clarity.
+One thing to mention before as it applies to every graph:
+
+*Distinct Clusters*: The visualization displays distinct clusters of
+data points, each representing one of the ten digit classes (0 through
+9) in the MNIST dataset. These clusters are color-coded for clarity.
 
 ``` r
 library(ggplot2)
@@ -397,6 +393,7 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
 ```
 
 ![](Dimension_reduction_files/figure-gfm/all%20graphs1-1.png)<!-- -->
+
 Graph for perplexity = 30 and iterations = 1000
 
 *Cluster Separation*: Some clusters appear well-separated from others,
@@ -421,6 +418,10 @@ digits are written, while others are more sparse, indicating more
 variation in writing style within those digit classes.
 
 ![](Dimension_reduction_files/figure-gfm/all%20graphs2-1.png)<!-- -->
+
+Interpretation of the t-SNE Visualization with Perplexity 100 and
+iterations of 1000
+
 *Cluster Overlap*: Compared to the previous visualization with a
 perplexity of 30, there seems to be more overlap between clusters. This
 might be an indication that the higher perplexity value is causing the
@@ -442,6 +443,7 @@ likelihood that a supervised learning model may misclassify digits,
 particularly those that reside in overlapping regions.
 
 ![](Dimension_reduction_files/figure-gfm/all%20graphs3-1.png)<!-- -->
+
 Interpretation of the t-SNE Visualization with Perplexity 5 and
 iterations of 1000
 
@@ -468,6 +470,7 @@ as meaningful local structures. This can sometimes result in an
 embedding that captures noise as if it were a significant structure.
 
 ![](Dimension_reduction_files/figure-gfm/all%20graphs4-1.png)<!-- -->
+
 Interpretation of the t-SNE Visualization with Perplexity 30 and
 Iterations 2000
 
@@ -498,6 +501,7 @@ between clusters, possibly representing digits that are written in an
 atypical style or digits that share features with multiple categories.
 
 ![](Dimension_reduction_files/figure-gfm/all%20graphs5-1.png)<!-- -->
+
 Interpretation of the t-SNE Visualization with Perplexity 30 and
 Iterations 100
 
@@ -676,7 +680,8 @@ three-dimensional representations. This helps in revealing underlying
 patterns and relationships. However, it is important to keep in mind the
 limitations of dimensionality reduction methods while interpreting these
 visualizations. To obtain a comprehensive understanding of the dataset,
-it is also necessary to use other analytical tools alongside t-SNE. In
-conclusion, t-SNE is a powerful tool in the dimensionality reduction
+it is also necessary to use other analytical tools alongside t-SNE.
+
+In conclusion, t-SNE is a powerful tool in the dimensionality reduction
 wide range of tools, which can aid significantly in exploratory data
 analysis.
