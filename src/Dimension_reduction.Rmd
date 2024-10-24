@@ -70,7 +70,7 @@ test_labels <- mnist$test$y
 dim(train_images)
 ```
 
-![MNIST sample of images](PNG_GIF/mnist_animation_enlarged.gif)
+![MNIST sample of images](../images/mnist_animation_enlarged.gif)
 
 ___
 
