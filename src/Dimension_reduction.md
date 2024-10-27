@@ -231,29 +231,29 @@ tsne_results_p30_i1000 <- Rtsne(train_images_flat, dims = 2, perplexity = 30, ve
     ##  - point 40000 of 60000
     ##  - point 50000 of 60000
     ##  - point 60000 of 60000
-    ## Done in 344.77 seconds (sparsity = 0.002086)!
+    ## Done in 331.29 seconds (sparsity = 0.002086)!
     ## Learning embedding...
-    ## Iteration 50: error is 118.896811 (50 iterations in 12.63 seconds)
-    ## Iteration 100: error is 118.896811 (50 iterations in 13.80 seconds)
-    ## Iteration 150: error is 118.892813 (50 iterations in 14.42 seconds)
-    ## Iteration 200: error is 109.521719 (50 iterations in 12.08 seconds)
-    ## Iteration 250: error is 103.548045 (50 iterations in 13.01 seconds)
-    ## Iteration 300: error is 4.921023 (50 iterations in 11.72 seconds)
-    ## Iteration 350: error is 4.512190 (50 iterations in 11.54 seconds)
-    ## Iteration 400: error is 4.269992 (50 iterations in 10.90 seconds)
-    ## Iteration 450: error is 4.096157 (50 iterations in 11.22 seconds)
-    ## Iteration 500: error is 3.961477 (50 iterations in 11.15 seconds)
-    ## Iteration 550: error is 3.852517 (50 iterations in 11.10 seconds)
-    ## Iteration 600: error is 3.761633 (50 iterations in 11.29 seconds)
-    ## Iteration 650: error is 3.684040 (50 iterations in 11.27 seconds)
-    ## Iteration 700: error is 3.616261 (50 iterations in 11.12 seconds)
-    ## Iteration 750: error is 3.556745 (50 iterations in 10.90 seconds)
-    ## Iteration 800: error is 3.504050 (50 iterations in 11.27 seconds)
-    ## Iteration 850: error is 3.456746 (50 iterations in 11.35 seconds)
-    ## Iteration 900: error is 3.413664 (50 iterations in 11.30 seconds)
-    ## Iteration 950: error is 3.374273 (50 iterations in 11.19 seconds)
-    ## Iteration 1000: error is 3.337869 (50 iterations in 10.91 seconds)
-    ## Fitting performed in 234.18 seconds.
+    ## Iteration 50: error is 118.896811 (50 iterations in 12.46 seconds)
+    ## Iteration 100: error is 118.896811 (50 iterations in 12.71 seconds)
+    ## Iteration 150: error is 118.892813 (50 iterations in 13.25 seconds)
+    ## Iteration 200: error is 109.521719 (50 iterations in 11.22 seconds)
+    ## Iteration 250: error is 103.548045 (50 iterations in 12.37 seconds)
+    ## Iteration 300: error is 4.921023 (50 iterations in 11.35 seconds)
+    ## Iteration 350: error is 4.512190 (50 iterations in 10.29 seconds)
+    ## Iteration 400: error is 4.269992 (50 iterations in 10.83 seconds)
+    ## Iteration 450: error is 4.096157 (50 iterations in 11.10 seconds)
+    ## Iteration 500: error is 3.961477 (50 iterations in 10.51 seconds)
+    ## Iteration 550: error is 3.852517 (50 iterations in 10.48 seconds)
+    ## Iteration 600: error is 3.761633 (50 iterations in 10.80 seconds)
+    ## Iteration 650: error is 3.684040 (50 iterations in 10.97 seconds)
+    ## Iteration 700: error is 3.616261 (50 iterations in 10.20 seconds)
+    ## Iteration 750: error is 3.556745 (50 iterations in 10.21 seconds)
+    ## Iteration 800: error is 3.504050 (50 iterations in 10.46 seconds)
+    ## Iteration 850: error is 3.456746 (50 iterations in 11.27 seconds)
+    ## Iteration 900: error is 3.413664 (50 iterations in 10.60 seconds)
+    ## Iteration 950: error is 3.374273 (50 iterations in 10.34 seconds)
+    ## Iteration 1000: error is 3.337869 (50 iterations in 10.40 seconds)
+    ## Fitting performed in 221.83 seconds.
 
 ``` r
 dim(train_images)
@@ -386,7 +386,7 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
   labs(title = "MNIST Digits Visualized via t-SNE p 30 i 1000", x = "t-SNE Dimension 1", y = "t-SNE Dimension 2", color = "Digit Label")
 ```
 
-![](../results/Dimension_reduction_files/all%20graphs1-1.png)<!-- -->
+![](Dimension_reduction_files/figure-gfm/all%20graphs1-1.png)<!-- -->
 
 **Graph for perplexity = 30 and iterations = 1000**
 
@@ -411,7 +411,7 @@ appearing more dense, suggesting a higher consistency in how those
 digits are written, while others are more sparse, indicating more
 variation in writing style within those digit classes.
 
-![](../results/Dimension_reduction_files/all%20graphs2-1.png)<!-- -->
+![](Dimension_reduction_files/figure-gfm/all%20graphs2-1.png)<!-- -->
 
 **Interpretation of the t-SNE Visualization with Perplexity 100 and
 iterations of 1000**
@@ -436,7 +436,7 @@ local structure of the data.
 likelihood that a supervised learning model may misclassify digits,
 particularly those that reside in overlapping regions.
 
-![](../results/Dimension_reduction_files/all%20graphs3-1.png)<!-- -->
+![](Dimension_reduction_files/figure-gfm/all%20graphs3-1.png)<!-- -->
 
 **Interpretation of the t-SNE Visualization with Perplexity 5 and
 iterations of 1000**
@@ -463,7 +463,7 @@ overfit to noise or anomalies in the data, as it might interpret these
 as meaningful local structures. This can sometimes result in an
 embedding that captures noise as if it were a significant structure.
 
-![](../results/Dimension_reduction_files/all%20graphs4-1.png)<!-- -->
+![](Dimension_reduction_files/figure-gfm/all%20graphs4-1.png)<!-- -->
 
 **Interpretation of the t-SNE Visualization with Perplexity 30 and
 Iterations 2000**
@@ -494,7 +494,7 @@ not seem excessive, and the clusters are still identifiable.
 between clusters, possibly representing digits that are written in an
 atypical style or digits that share features with multiple categories.
 
-![](../results/Dimension_reduction_files/all%20graphs5-1.png)<!-- -->
+![](Dimension_reduction_files/figure-gfm/all%20graphs5-1.png)<!-- -->
 
 **Interpretation of the t-SNE Visualization with Perplexity 30 and
 Iterations 100**
