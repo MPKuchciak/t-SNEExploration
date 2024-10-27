@@ -62,3 +62,11 @@ if (!requireNamespace("Rtsne", quietly = TRUE)) install.packages("Rtsne")
 # Install TensorFlow
 keras::install_keras()
 ```
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0). You are free to modify, share, and use this project under the terms of the GPL-3.0 license. If you distribute modified versions of this work, you must release them under the same license.
+
+## Contributing
+
+Contributions are welcome! If you have suggestions or improvements, feel free to open an issue or submit a pull request. Please ensure your contributions align with the project goals and include relevant references or sources where applicable.

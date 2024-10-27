@@ -15,6 +15,7 @@ output:
 ___
 
 
+
 ## Introduction
 
 
@@ -44,8 +45,6 @@ The MNIST dataset was used as a source of data for this research. It is a large 
 if (!requireNamespace("keras", quietly = TRUE)) install.packages("keras")
 library(keras)
 # install_keras()
-
-knitr::opts_chunk$set(fig.path = "../results/Dimension_reduction_files/")
 
 options(width=1000)
 options(digits=3)
