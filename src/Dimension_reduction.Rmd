@@ -10,6 +10,7 @@ output:
     fig_width: 7
     fig_height: 5
     dev: 'png'
+knit_root_dir: ../results
 ---
 
 ___
