@@ -30,16 +30,15 @@ t-SNEExploration/
 ├── .gitignore                    # Files to ignore in version control
 ├── .gitattributes                # Git attributes
 ├── t-SNEExploration.Rproj        # R project file
-├── src/                          # RMarkdown file and other scripts
+├── src/                          # RMarkdown file and generated outputs
 │   ├── Dimension_reduction.Rmd   # RMarkdown analysis file
-├── results/                      # Outputs generated from analysis
 │   ├── Dimension_reduction.md    # Markdown output
 │   ├── Dimension_reduction_files/ # Auto-generated figures from RMarkdown
 │   └── HTML_version/             # (Optional) HTML outputs
 ├── docs/                         # GitHub Pages website content
 │   └── default.html              # Default layout for site
-├── images/                       # All images (plots, figures, etc.)
-│   └── mnist_animation_enlarged.gif
+├── images/                       # Additional images (plots, figures, etc.)
+│   └── mnist_animation_enlarged.gifs
 ```
 
 ## Getting Started
@@ -58,6 +57,7 @@ if (!requireNamespace("magick", quietly = TRUE)) install.packages("magick")
 if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
 if (!requireNamespace("Rtsne", quietly = TRUE)) install.packages("Rtsne")
 ```
+
 ```r
 # Install TensorFlow
 keras::install_keras()
