@@ -17,7 +17,7 @@ This project highlights the use of t-SNE for understanding high-dimensional data
 
 ## Visualization
 
-Below is a animation of the MNIST dataset elements:
+Below is an animation of the MNIST dataset elements:
 
 ![t-SNE Animation](images/mnist_animation_enlarged.gif)
 
@@ -69,4 +69,4 @@ This project is licensed under the GNU General Public License v3.0 (GPL-3.0). Yo
 
 ## Contributing
 
-Contributions are welcome! If you have suggestions or improvements, feel free to open an issue or submit a pull request. Please ensure your contributions align with the project goals and include relevant references or sources where applicable.
+Contributions are welcome! If you have suggestions or improvements, feel free to open an issue or submit a pull request. 
