@@ -5,7 +5,7 @@
 
 [t-SNE Exploration RPubs link](https://rpubs.com/TusVasMit/T-SNEExploration)
 
-[GitHub Pages link to project](https://your-github-page-link-here)
+[GitHub Pages link to project](https://mpkuchciak.github.io/t-SNEExploration/)
 
 This project explores the *t-SNE* (t-Distributed Stochastic Neighbor Embedding) dimensionality reduction technique, applied to the MNIST dataset. t-SNE is a powerful method for visualizing high-dimensional data in a low-dimensional space, preserving local data relationships and revealing clusters.
 
