@@ -1,8 +1,3 @@
----
-layout: default
-title: "T-SNE: A Dimensionality Reduction Technique Exploration"
----
-
 T-SNE: A Dimensionality Reduction Technique Exploration
 ================
 Maciej Kuchciak
