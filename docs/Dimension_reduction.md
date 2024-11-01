@@ -231,29 +231,29 @@ tsne_results_p30_i1000 <- Rtsne(train_images_flat, dims = 2, perplexity = 30, ve
     ##  - point 40000 of 60000
     ##  - point 50000 of 60000
     ##  - point 60000 of 60000
-    ## Done in 331.29 seconds (sparsity = 0.002086)!
+    ## Done in 324.12 seconds (sparsity = 0.002086)!
     ## Learning embedding...
-    ## Iteration 50: error is 118.896811 (50 iterations in 12.46 seconds)
-    ## Iteration 100: error is 118.896811 (50 iterations in 12.71 seconds)
-    ## Iteration 150: error is 118.892813 (50 iterations in 13.25 seconds)
-    ## Iteration 200: error is 109.521719 (50 iterations in 11.22 seconds)
-    ## Iteration 250: error is 103.548045 (50 iterations in 12.37 seconds)
-    ## Iteration 300: error is 4.921023 (50 iterations in 11.35 seconds)
-    ## Iteration 350: error is 4.512190 (50 iterations in 10.29 seconds)
-    ## Iteration 400: error is 4.269992 (50 iterations in 10.83 seconds)
-    ## Iteration 450: error is 4.096157 (50 iterations in 11.10 seconds)
-    ## Iteration 500: error is 3.961477 (50 iterations in 10.51 seconds)
-    ## Iteration 550: error is 3.852517 (50 iterations in 10.48 seconds)
-    ## Iteration 600: error is 3.761633 (50 iterations in 10.80 seconds)
-    ## Iteration 650: error is 3.684040 (50 iterations in 10.97 seconds)
-    ## Iteration 700: error is 3.616261 (50 iterations in 10.20 seconds)
-    ## Iteration 750: error is 3.556745 (50 iterations in 10.21 seconds)
-    ## Iteration 800: error is 3.504050 (50 iterations in 10.46 seconds)
-    ## Iteration 850: error is 3.456746 (50 iterations in 11.27 seconds)
-    ## Iteration 900: error is 3.413664 (50 iterations in 10.60 seconds)
-    ## Iteration 950: error is 3.374273 (50 iterations in 10.34 seconds)
-    ## Iteration 1000: error is 3.337869 (50 iterations in 10.40 seconds)
-    ## Fitting performed in 221.83 seconds.
+    ## Iteration 50: error is 118.896811 (50 iterations in 11.17 seconds)
+    ## Iteration 100: error is 118.896811 (50 iterations in 12.09 seconds)
+    ## Iteration 150: error is 118.892813 (50 iterations in 12.60 seconds)
+    ## Iteration 200: error is 109.521719 (50 iterations in 10.69 seconds)
+    ## Iteration 250: error is 103.548045 (50 iterations in 11.42 seconds)
+    ## Iteration 300: error is 4.921023 (50 iterations in 10.42 seconds)
+    ## Iteration 350: error is 4.512190 (50 iterations in 9.66 seconds)
+    ## Iteration 400: error is 4.269992 (50 iterations in 9.59 seconds)
+    ## Iteration 450: error is 4.096157 (50 iterations in 9.80 seconds)
+    ## Iteration 500: error is 3.961477 (50 iterations in 9.74 seconds)
+    ## Iteration 550: error is 3.852517 (50 iterations in 9.67 seconds)
+    ## Iteration 600: error is 3.761633 (50 iterations in 9.75 seconds)
+    ## Iteration 650: error is 3.684040 (50 iterations in 9.74 seconds)
+    ## Iteration 700: error is 3.616261 (50 iterations in 9.71 seconds)
+    ## Iteration 750: error is 3.556745 (50 iterations in 9.80 seconds)
+    ## Iteration 800: error is 3.504050 (50 iterations in 9.73 seconds)
+    ## Iteration 850: error is 3.456746 (50 iterations in 9.68 seconds)
+    ## Iteration 900: error is 3.413664 (50 iterations in 9.65 seconds)
+    ## Iteration 950: error is 3.374273 (50 iterations in 9.86 seconds)
+    ## Iteration 1000: error is 3.337869 (50 iterations in 9.72 seconds)
+    ## Fitting performed in 204.47 seconds.
 
 ``` r
 dim(train_images)
