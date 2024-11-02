@@ -115,7 +115,7 @@ probability $p_{j|i}$ that $x_i$ would pick $x_j$ as its neighbor.
 p_{j|i} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
 \]
 
-- \(x_i, x_j\): Data points in the original high-dimensional space.
+- \( x_i, x_j \): Data points in the original high-dimensional space.
 - $ p_{j|i} $: Conditional probability that point $x_i$ would pick $x_j$
   as its neighbor, based on their distance and the density of points
   around $x_i$.
