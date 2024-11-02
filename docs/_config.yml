@@ -1,3 +1,5 @@
 title: "T-SNE Exploration"
 description: "Exploring the MNIST dataset using t-SNE"
-markdown: kramdown  # For better Markdown compatibility (optional)
+markdown: kramdown
+plugins:
+  - jekyll-mathjax
