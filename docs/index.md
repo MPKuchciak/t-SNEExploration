@@ -111,11 +111,11 @@ data for visualization purposes.
 For each pair of points $x_i$ and $x_j$, compute the conditional
 probability $p_{j|i}$ that $x_i$ would pick $x_j$ as its neighbor.
 
-$$
+\[
 p_{j|i} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
-$$
+\]
 
-- $ x_i, x_j $: Data points in the original high-dimensional space.
+- \(x_i, x_j\): Data points in the original high-dimensional space.
 - $ p_{j|i} $: Conditional probability that point $x_i$ would pick $x_j$
   as its neighbor, based on their distance and the density of points
   around $x_i$.
@@ -393,7 +393,7 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
   labs(title = "MNIST Digits Visualized via t-SNE p 30 i 1000", x = "t-SNE Dimension 1", y = "t-SNE Dimension 2", color = "Digit Label")
 ```
 
-![](/Dimension_reduction_files/figure-gfm/all%20graphs1-1.png)<!-- -->
+![](Dimension_reduction_files/figure-gfm/all%20graphs1-1.png)<!-- -->
 
 **Graph for perplexity = 30 and iterations = 1000**
 
@@ -418,7 +418,7 @@ appearing more dense, suggesting a higher consistency in how those
 digits are written, while others are more sparse, indicating more
 variation in writing style within those digit classes.
 
-![](./Dimension_reduction_files/figure-gfm/all%20graphs2-1.png)<!-- -->
+![](Dimension_reduction_files/figure-gfm/all%20graphs2-1.png)<!-- -->
 
 **Interpretation of the t-SNE Visualization with Perplexity 100 and
 iterations of 1000**
