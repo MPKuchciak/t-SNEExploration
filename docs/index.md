@@ -418,7 +418,7 @@ appearing more dense, suggesting a higher consistency in how those
 digits are written, while others are more sparse, indicating more
 variation in writing style within those digit classes.
 
-![](Dimension_reduction_files/figure-gfm/all%20graphs2-1.png)<!-- -->
+![](./Dimension_reduction_files/figure-gfm/all%20graphs2-1.png)<!-- -->
 
 **Interpretation of the t-SNE Visualization with Perplexity 100 and
 iterations of 1000**
