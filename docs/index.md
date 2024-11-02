@@ -179,7 +179,7 @@ $$
   the crowding problem by effectively spreading out points that are
   moderately far apart in the high-dimensional space.
 
-- $\log \frac{p_{ij}}{q_{ij}}$: The logarithm of the ratio of $p_{ij}$
+- $ \log \frac{p_{ij}}{q_{ij}} $: The logarithm of the ratio of $ p_{ij} $
   to $q_{ij}$, contributing to the KL divergence calculation. When
   $p_{ij}$ closely matches $q_{ij}$, their ratio approaches 1, and the
   logarithm approaches 0, indicating little divergence. Large
