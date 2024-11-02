@@ -1,4 +1,0 @@
-theme: jekyll-theme-hacker
-title: "t-SNE Exploration"
-description: "Exploring the MNIST dataset using t-SNE."
-markdown: kramdown
