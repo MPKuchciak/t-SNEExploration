@@ -1,6 +1,5 @@
 ---
 layout: default
-title: "T-SNE: A Dimensionality Reduction Technique Exploration"
 ---
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
