@@ -393,7 +393,7 @@ ggplot(df_tsne, aes(x = X, y = Y, color = Digit)) +
   labs(title = "MNIST Digits Visualized via t-SNE p 30 i 1000", x = "t-SNE Dimension 1", y = "t-SNE Dimension 2", color = "Digit Label")
 ```
 
-![](Dimension_reduction_files/figure-gfm/all%20graphs1-1.png)<!-- -->
+![](/Dimension_reduction_files/figure-gfm/all%20graphs1-1.png)<!-- -->
 
 **Graph for perplexity = 30 and iterations = 1000**
 
