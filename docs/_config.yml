@@ -2,25 +2,17 @@
 
 description: "Exploring the MNIST dataset using t-SNE"
 markdown: kramdown
-
 kramdown:
   input: GFM
   math_engine: mathjax
   math_engine_opts:
     delimiters:
-      inline: ['$', '$']    # Delimiters for inline math
-      block: ['$$', '$$']    # Delimiters for block math
-
+      inline: ["$", "$"]    # Use $ for inline math
+      block: ["$$", "$$"]   # Use $$ for block math
 plugins:
   - jekyll-mathjax
 
-# Optional: Specify the base URL if your site is hosted in a subdirectory
-# baseurl: "/your-repo-name"
-
-# Optional: Set the URL to your GitHub Pages site
-# url: "https://yourusername.github.io"
-
-# Exclude unnecessary files from the build
+# Exclude unnecessary files from GitHub Pages build
 exclude:
   - "*.Rhistory"
   - "*.Rapp.history"
@@ -33,10 +25,8 @@ exclude:
   - "vignettes/*.html"
   - "vignettes/*.pdf"
 
-# Include specific directories
+# Include essential directories
 include:
-  - _pages
-  - _posts
-  - _layouts
-  - images
+  - docs
   - Dimension_reduction_files/figure-gfm
+  - images
