@@ -1,4 +1,10 @@
 description: "Exploring the MNIST dataset using t-SNE"
 markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
+  math_engine_opts:
+    inline_math_delimiter: "\\("  # delimiters for inline LaTeX
+    block_math_delimiter: "\\["   # delimiters for block LaTeX
 plugins:
   - jekyll-mathjax
