@@ -106,7 +106,16 @@ data for visualization purposes.
 #### **Step 1**: Compute Pairwise Similarities in High-Dimensional Space
 
 For each pair of points $x_i$ and $x_j$, compute the conditional
-probability $p_{j|i}$ that $x_i$ would pick $x_j$ as its neighbor.
+probability that $x_i$ would pick $x_j$ as its neighbor.
+
+$$ p_{j|i} = 2 $$ 
+
+
+
+
+probability that
+$$ p_{j|i} = 2 $$ 
+as its neighbor.
 
 $$
 p_{j|i} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
