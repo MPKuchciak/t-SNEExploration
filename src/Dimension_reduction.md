@@ -105,34 +105,39 @@ data for visualization purposes.
 
 #### **Step 1**: Compute Pairwise Similarities in High-Dimensional Space
 
-For each pair of points $x_i$ and $x_j$, compute the conditional
-probability $p_{j|i}$ that $x_i$ would pick $x_j$ as its neighbor.
+For each pair of points $$x_i$$ and $$x_j$$ , compute the conditional
+probability $$p_{j|i}$$ that $$x_i$$ would pick $$x_j$$ as its neighbor.
 
 $$
 p_{j|i} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
 $$
 
-- $x_i, x_j$: Data points in the original high-dimensional space.
-- $p_{j|i}$: Conditional probability that point $x_i$ would pick $x_j$
-  as its neighbor, based on their distance and the density of points
-  around $x_i$.
-- $\sigma_i$: The standard deviation of the Gaussian distribution
-  centered on $x_i$, adjusted for each point to maintain a consistent
-  perplexity across the dataset.
+- $$ x_i, x_j $$  
+  Data points in the original high-dimensional space.
+
+- $$ p_{j|i} $$  
+  Conditional probability that point $$ x_i $$ would pick $$x_j$$ as its
+  neighbor, based on their distance and the density of points around
+  $$x_i$$.
+
+- $$\sigma_i$$  
+  The standard deviation of the Gaussian distribution centered on
+  $$x_i$$ , adjusted for each point to maintain a consistent perplexity
+  across the dataset.
 
 #### **Step 2**: Symmetrize the Probability Distribution
 
-Define the joint probability $p_{ij}$ as the symmetrized conditional
+Define the joint probability $$p_{ij}$$ as the symmetrized conditional
 probabilities.
 
 $$
 p_{ij} = \frac{p_{j|i} + p_{i|j}}{2N}
 $$
 
-- $p_{ij}$: The joint probability that points $x_i$ and $x_j$ pick each
-  other as neighbors. It’s symmetrized to ensure that the relationship
-  is mutual, thereby stabilizing the embedding.
-- $N$: Total number of points in the dataset, used for normalization.
+- $$p_{ij}\): The joint probability that points $$x_i) and \$\$x_j) pick
+  each other as neighbors. It’s symmetrized to ensure that the
+  relationship is mutual, thereby stabilizing the embedding.
+- \$\$N): Total number of points in the dataset, used for normalization.
 
 #### **Step 3**: Compute Pairwise Similarities in Low-Dimensional Space
 
@@ -143,12 +148,12 @@ $$
 q_{ij} = \frac{(1 + \|y_i - y_j\|^2)^{-1}}{\sum_{k \neq l}(1 + \|y_k - y_l\|^2)^{-1}}
 $$
 
-- $y_i, y_j$: Data points in the low-dimensional space, corresponding to
-  $x_i$ and $x_j$.
-- $q_{ij}$: Probability that points $y_i$ and $y_j$ are neighbors in the
-  low-dimensional space, using a Student-t distribution to allow for
-  effective separation of clusters by increasing the effective distance
-  between moderately distant points.
+- $$y_i, y_j\): Data points in the low-dimensional space, corresponding to $$x_i)
+  and \$\$x_j).
+- $$q_{ij}\): Probability that points $$y_i) and \$\$y_j) are neighbors
+  in the low-dimensional space, using a Student-t distribution to allow
+  for effective separation of clusters by increasing the effective
+  distance between moderately distant points.
 
 #### **Step 4**: Minimize the Kullback–Leibler Divergence
 
@@ -159,45 +164,43 @@ $$
 KL(P\|Q) = \sum_{i \neq j} p_{ij} \log \frac{p_{ij}}{q_{ij}}
 $$
 
-- $KL(P||Q)$: The Kullback–Leibler divergence, is a measure of how
-  probability distribution of one probability distribution differs from
-  a second. In the context of t-SNE, it quantifies the difference
-  between the high-dimensional pairwise similarities ($P$) and their
-  low-dimensional counterparts ($Q$).
+- $$KL(P||Q)\): The Kullback–Leibler divergence, is a measure of how probability distribution of one probability distribution differs from a second. In the context of t-SNE, it quantifies the difference between the high-dimensional pairwise similarities ($$P))
+  and their low-dimensional counterparts (\$\$Q)).
 
-- $p_{ij}$: The joint probability in the high-dimensional space,
-  indicating the probability that points $x_i$ and $x_j$ are neighbors.
-  It reflects the similarity between points as modeled by a Gaussian
-  distribution in the original space.
+- $$p_{ij}\): The joint probability in the high-dimensional space, indicating the probability that points $$x_i)
+  and \$\$x_j) are neighbors. It reflects the similarity between points
+  as modeled by a Gaussian distribution in the original space.
 
-- $q_{ij}$: The joint probability in the low-dimensional space, modeling
-  the similarity between points $y_i$ and $y_j$ using a Student-t
-  distribution. The use of the Student-t distribution helps to mitigate
-  the crowding problem by effectively spreading out points that are
-  moderately far apart in the high-dimensional space.
+- $$q_{ij}\): The joint probability in the low-dimensional space, modeling the similarity between points $$y_i)
+  and \$\$y_j) using a Student-t distribution. The use of the Student-t
+  distribution helps to mitigate the crowding problem by effectively
+  spreading out points that are moderately far apart in the
+  high-dimensional space.
 
-- $\log \frac{p_{ij}}{q_{ij}}$: The logarithm of the ratio of $p_{ij}$
-  to $q_{ij}$, contributing to the KL divergence calculation. When
-  $p_{ij}$ closely matches $q_{ij}$, their ratio approaches 1, and the
-  logarithm approaches 0, indicating little divergence. Large
-  discrepancies between $p_{ij}$ and $q_{ij}$ contribute positively to
-  the KL divergence, signaling a poor match between the high-dimensional
-  and low-dimensional representations.
+- $$\log \frac{p_{ij}}{q_{ij}}\): The logarithm of the ratio of $$p\_{ij})
+  to
+  $$q_{ij}\), contributing to the KL divergence calculation. When $$p\_{ij})
+  closely matches
+  $$q_{ij}\), their ratio approaches 1, and the logarithm approaches 0, indicating little divergence. Large discrepancies between $$p\_{ij})
+  and \$\$q\_{ij}) contribute positively to the KL divergence, signaling
+  a poor match between the high-dimensional and low-dimensional
+  representations.
 
-- $\sum_{i \neq j}$: The sum over all distinct pairs of points, ensuring
-  that the entire distribution of pairwise similarities is considered in
-  the divergence calculation. This summation accounts for the collective
+- \$\$\_{i j}): The sum over all distinct pairs of points, ensuring that
+  the entire distribution of pairwise similarities is considered in the
+  divergence calculation. This summation accounts for the collective
   arrangement of all points in the embedding space, emphasizing the
   preservation of local structures defined by the pairwise
   probabilities.
 
-The goal of minimizing $KL(P||Q)$ is to adjust the positions of points
-in the low-dimensional space ($y_i$) such that $Q$ resembles $P$ as
-closely as possible, thereby ensuring that the t-SNE embeddings
-faithfully represent the original data’s structure. This optimization
-process is typically achieved through gradient descent, iteratively
-adjusting the points’ positions to reduce the KL divergence until a
-stable, low-dimensional representation of the data is found.
+The goal of minimizing
+$$KL(P||Q)\) is to adjust the positions of points in the low-dimensional space ($$y_i))
+such that $$Q\) resembles $$P) as closely as possible, thereby ensuring
+that the t-SNE embeddings faithfully represent the original data’s
+structure. This optimization process is typically achieved through
+gradient descent, iteratively adjusting the points’ positions to reduce
+the KL divergence until a stable, low-dimensional representation of the
+data is found.
 
 ------------------------------------------------------------------------
 
@@ -235,29 +238,29 @@ tsne_results_p30_i1000 <- Rtsne(train_images_flat, dims = 2, perplexity = 30, ve
     ##  - point 40000 of 60000
     ##  - point 50000 of 60000
     ##  - point 60000 of 60000
-    ## Done in 336.62 seconds (sparsity = 0.002086)!
+    ## Done in 336.97 seconds (sparsity = 0.002086)!
     ## Learning embedding...
-    ## Iteration 50: error is 118.896811 (50 iterations in 12.49 seconds)
-    ## Iteration 100: error is 118.896811 (50 iterations in 14.80 seconds)
-    ## Iteration 150: error is 118.892813 (50 iterations in 13.63 seconds)
-    ## Iteration 200: error is 109.521719 (50 iterations in 11.31 seconds)
-    ## Iteration 250: error is 103.548045 (50 iterations in 14.23 seconds)
-    ## Iteration 300: error is 4.921023 (50 iterations in 13.51 seconds)
-    ## Iteration 350: error is 4.512190 (50 iterations in 12.71 seconds)
-    ## Iteration 400: error is 4.269992 (50 iterations in 11.26 seconds)
-    ## Iteration 450: error is 4.096157 (50 iterations in 11.59 seconds)
-    ## Iteration 500: error is 3.961477 (50 iterations in 11.58 seconds)
-    ## Iteration 550: error is 3.852517 (50 iterations in 11.44 seconds)
-    ## Iteration 600: error is 3.761633 (50 iterations in 11.00 seconds)
-    ## Iteration 650: error is 3.684040 (50 iterations in 11.11 seconds)
-    ## Iteration 700: error is 3.616261 (50 iterations in 11.57 seconds)
-    ## Iteration 750: error is 3.556745 (50 iterations in 11.75 seconds)
-    ## Iteration 800: error is 3.504050 (50 iterations in 12.25 seconds)
-    ## Iteration 850: error is 3.456746 (50 iterations in 11.77 seconds)
-    ## Iteration 900: error is 3.413664 (50 iterations in 11.03 seconds)
-    ## Iteration 950: error is 3.374273 (50 iterations in 11.31 seconds)
-    ## Iteration 1000: error is 3.337869 (50 iterations in 10.92 seconds)
-    ## Fitting performed in 241.27 seconds.
+    ## Iteration 50: error is 118.896811 (50 iterations in 12.08 seconds)
+    ## Iteration 100: error is 118.896811 (50 iterations in 13.31 seconds)
+    ## Iteration 150: error is 118.892813 (50 iterations in 13.99 seconds)
+    ## Iteration 200: error is 109.521719 (50 iterations in 12.00 seconds)
+    ## Iteration 250: error is 103.548045 (50 iterations in 13.16 seconds)
+    ## Iteration 300: error is 4.921023 (50 iterations in 11.86 seconds)
+    ## Iteration 350: error is 4.512190 (50 iterations in 10.36 seconds)
+    ## Iteration 400: error is 4.269992 (50 iterations in 10.44 seconds)
+    ## Iteration 450: error is 4.096157 (50 iterations in 10.54 seconds)
+    ## Iteration 500: error is 3.961477 (50 iterations in 11.52 seconds)
+    ## Iteration 550: error is 3.852517 (50 iterations in 11.70 seconds)
+    ## Iteration 600: error is 3.761633 (50 iterations in 11.65 seconds)
+    ## Iteration 650: error is 3.684040 (50 iterations in 11.69 seconds)
+    ## Iteration 700: error is 3.616261 (50 iterations in 13.08 seconds)
+    ## Iteration 750: error is 3.556745 (50 iterations in 11.07 seconds)
+    ## Iteration 800: error is 3.504050 (50 iterations in 11.12 seconds)
+    ## Iteration 850: error is 3.456746 (50 iterations in 11.08 seconds)
+    ## Iteration 900: error is 3.413664 (50 iterations in 11.28 seconds)
+    ## Iteration 950: error is 3.374273 (50 iterations in 10.53 seconds)
+    ## Iteration 1000: error is 3.337869 (50 iterations in 10.26 seconds)
+    ## Fitting performed in 232.71 seconds.
 
 ``` r
 dim(train_images)
