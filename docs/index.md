@@ -110,8 +110,11 @@ probability that $x_i$ would pick $x_j$ as its neighbor.
 
 $$ p_{j|i} = 2 $$ 
 
+$$ p_{j|i} $$ 
 
+$ p_{j|i} $
 
+$ p_{j|i} = 2 $
 
 probability that
 $$ p_{j|i} = 2 $$ 
