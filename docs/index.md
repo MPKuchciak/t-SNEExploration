@@ -80,7 +80,7 @@ images of 28x28 pixels, MNIST is a challenging dataset for visualization
 and pattern recognition, making it ideal for t-SNE.
 
 <figure>
-<img src="../images/mnist_animation_enlarged.gif"
+<img src="images/mnist_animation_enlarged.gif"
 alt="MNIST sample of images" />
 <figcaption aria-hidden="true">MNIST sample of images</figcaption>
 </figure>
