@@ -101,12 +101,9 @@ data for visualization purposes.
 
 #### **Step 1**: Compute Pairwise Similarities in High-Dimensional Space
 
-For each pair of points 
-$$ x_i $$ 
-and 
+For each pair of points $$ x_i $$ and 
 $$ x_j $$, compute the conditional
-probability that 
-$$ x_i $$ 
+probability that $$ x_i $$ 
 would pick $$ x_j $$ as its neighbor.
 
 $$
