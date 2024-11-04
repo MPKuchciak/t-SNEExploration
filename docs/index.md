@@ -117,17 +117,17 @@ $$
 
 #### **Step 2**: Symmetrize the Probability Distribution
 
-Define the joint probability $p_{ij}$ as the symmetrized conditional
+Define the joint probability $$p_{ij}$$ as the symmetrized conditional
 probabilities.
 
 $$
 p_{ij} = \frac{p_{j|i} + p_{i|j}}{2N}
 $$
 
-- $p_{ij}$: The joint probability that points $x_i$ and $x_j$ pick each
+- $$p_{ij}$$: The joint probability that points $$x_i$$ and $$x_j$$ pick each
   other as neighbors. It’s symmetrized to ensure that the relationship
   is mutual, thereby stabilizing the embedding.
-- $N$: Total number of points in the dataset, used for normalization.
+- $$N$$: Total number of points in the dataset, used for normalization.
 
 #### **Step 3**: Compute Pairwise Similarities in Low-Dimensional Space
 
@@ -138,9 +138,9 @@ $$
 q_{ij} = \frac{(1 + \|y_i - y_j\|^2)^{-1}}{\sum_{k \neq l}(1 + \|y_k - y_l\|^2)^{-1}}
 $$
 
-- $y_i, y_j$: Data points in the low-dimensional space, corresponding to
-  $x_i$ and $x_j$.
-- $q_{ij}$: Probability that points $y_i$ and $y_j$ are neighbors in the
+- $$y_i, y_j$$: Data points in the low-dimensional space, corresponding to
+  $$x_i$$ and $$x_j$$.
+- $$q_{ij}$$: Probability that points $$y_i$$ and $$y_j$$ are neighbors in the
   low-dimensional space, using a Student-t distribution to allow for
   effective separation of clusters by increasing the effective distance
   between moderately distant points.
@@ -154,40 +154,40 @@ $$
 KL(P\|Q) = \sum_{i \neq j} p_{ij} \log \frac{p_{ij}}{q_{ij}}
 $$
 
-- $KL(P||Q)$: The Kullback–Leibler divergence, is a measure of how
+- $$KL(P||Q)$$: The Kullback–Leibler divergence, is a measure of how
   probability distribution of one probability distribution differs from
   a second. In the context of t-SNE, it quantifies the difference
-  between the high-dimensional pairwise similarities ($P$) and their
-  low-dimensional counterparts ($Q$).
+  between the high-dimensional pairwise similarities ($$P$$) and their
+  low-dimensional counterparts ($$Q$$).
 
-- $p_{ij}$: The joint probability in the high-dimensional space,
-  indicating the probability that points $x_i$ and $x_j$ are neighbors.
+- $$p_{ij}$$: The joint probability in the high-dimensional space,
+  indicating the probability that points $$x_i$$ and $$x_j$$ are neighbors.
   It reflects the similarity between points as modeled by a Gaussian
   distribution in the original space.
 
-- $q_{ij}$: The joint probability in the low-dimensional space, modeling
-  the similarity between points $y_i$ and $y_j$ using a Student-t
+- $$q_{ij}$$: The joint probability in the low-dimensional space, modeling
+  the similarity between points $$y_i$$ and $$y_j$$ using a Student-t
   distribution. The use of the Student-t distribution helps to mitigate
   the crowding problem by effectively spreading out points that are
   moderately far apart in the high-dimensional space.
 
-- $\log \frac{p_{ij}}{q_{ij}}$: The logarithm of the ratio of $p_{ij}$
-  to $q_{ij}$, contributing to the KL divergence calculation. When
-  $p_{ij}$ closely matches $q_{ij}$, their ratio approaches 1, and the
+- $$\log \frac{p_{ij}}{q_{ij}}$$: The logarithm of the ratio of $$p_{ij}$$
+  to $$q_{ij}$$, contributing to the KL divergence calculation. When
+  $$p_{ij}$$ closely matches $$q_{ij}$$, their ratio approaches 1, and the
   logarithm approaches 0, indicating little divergence. Large
-  discrepancies between $p_{ij}$ and $q_{ij}$ contribute positively to
+  discrepancies between $$p_{ij}$$ and $$q_{ij}$$ contribute positively to
   the KL divergence, signaling a poor match between the high-dimensional
   and low-dimensional representations.
 
-- $\sum_{i \neq j}$: The sum over all distinct pairs of points, ensuring
+- $$\sum_{i \neq j}$$: The sum over all distinct pairs of points, ensuring
   that the entire distribution of pairwise similarities is considered in
   the divergence calculation. This summation accounts for the collective
   arrangement of all points in the embedding space, emphasizing the
   preservation of local structures defined by the pairwise
   probabilities.
 
-The goal of minimizing $KL(P||Q)$ is to adjust the positions of points
-in the low-dimensional space ($y_i$) such that $Q$ resembles $P$ as
+The goal of minimizing $$KL(P||Q)$$ is to adjust the positions of points
+in the low-dimensional space ($$y_i$$) such that $$Q$$ resembles $$P$$ as
 closely as possible, thereby ensuring that the t-SNE embeddings
 faithfully represent the original data’s structure. This optimization
 process is typically achieved through gradient descent, iteratively
