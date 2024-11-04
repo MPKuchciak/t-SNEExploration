@@ -40,7 +40,7 @@ January 2024
   t-SNE](#challenges-and-limitations-of-t-sne)
 - [Conclusion](#conclusion)
 
-------------------------------------------------------------------------
+
 
 ## Introduction
 
@@ -55,8 +55,6 @@ data. This process is important for exploring and understanding the
 structure of data, identifying clusters, and improving the performance
 of machine learning models.
 
-------------------------------------------------------------------------
-
 ### Significance of t-SNE
 
 t-SNE, developed by Laurens van der Maaten and Geoffrey Hinton, stands
@@ -69,8 +67,6 @@ the visualization of multi-dimensional data in two or three dimensions.
 This makes t-SNE particularly valuable for datasets like MNIST, where
 understanding the distribution and separation of digit representations
 can provide insights into the complexity of the data.
-
-------------------------------------------------------------------------
 
 ## Methodology
 
@@ -105,31 +101,15 @@ data for visualization purposes.
 
 #### **Step 1**: Compute Pairwise Similarities in High-Dimensional Space
 
-For each pair of points $x_i$ and $x_j$, compute the conditional
-probability that $x_i$ would pick $x_j$ as its neighbor.
-
-$$ p_{j|i} = 2 $$ 
-
-For each pair of points
-$$ p_{j|i} $$ 
-compute the conditional
-
-For each pair of points $$ p_{j|i} $$ compute the conditional 
-
-For each pair of points $$ p_{j|i} $$ 
-
-compute the conditional
-
 For each pair of points 
-$$ p_{j|i} $$ 
-compute the conditional
-
-$ p_{j|i} $
-
-$ p_{j|i} = 2 $
-
-probability that
-$$ p_{j|i} = 2 $$ 
+$$ x_i $$ 
+and 
+$$ x_j $$
+, compute the conditional
+probability that 
+$$ x_i $$ 
+would pick 
+$$ x_j $$ 
 as its neighbor.
 
 $$
