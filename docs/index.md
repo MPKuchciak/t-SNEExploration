@@ -104,12 +104,10 @@ data for visualization purposes.
 For each pair of points 
 $$ x_i $$ 
 and 
-$$ x_j $$
-, compute the conditional
+$$ x_j $$, compute the conditional
 probability that 
 $$ x_i $$ 
-would pick 
-$$ x_j $$ as its neighbor.
+would pick $$ x_j $$ as its neighbor.
 
 $$
 p_{j|i} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
