@@ -3,6 +3,10 @@ T-SNE: A Dimensionality Reduction Technique Exploration
 Maciej Kuchciak
 January 2024
 
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 - [Introduction](#introduction)
   - [Overview of dimensionality reduction in unsupervised
     learning](#overview-of-dimensionality-reduction-in-unsupervised-learning)
@@ -231,29 +235,29 @@ tsne_results_p30_i1000 <- Rtsne(train_images_flat, dims = 2, perplexity = 30, ve
     ##  - point 40000 of 60000
     ##  - point 50000 of 60000
     ##  - point 60000 of 60000
-    ## Done in 324.12 seconds (sparsity = 0.002086)!
+    ## Done in 336.62 seconds (sparsity = 0.002086)!
     ## Learning embedding...
-    ## Iteration 50: error is 118.896811 (50 iterations in 11.17 seconds)
-    ## Iteration 100: error is 118.896811 (50 iterations in 12.09 seconds)
-    ## Iteration 150: error is 118.892813 (50 iterations in 12.60 seconds)
-    ## Iteration 200: error is 109.521719 (50 iterations in 10.69 seconds)
-    ## Iteration 250: error is 103.548045 (50 iterations in 11.42 seconds)
-    ## Iteration 300: error is 4.921023 (50 iterations in 10.42 seconds)
-    ## Iteration 350: error is 4.512190 (50 iterations in 9.66 seconds)
-    ## Iteration 400: error is 4.269992 (50 iterations in 9.59 seconds)
-    ## Iteration 450: error is 4.096157 (50 iterations in 9.80 seconds)
-    ## Iteration 500: error is 3.961477 (50 iterations in 9.74 seconds)
-    ## Iteration 550: error is 3.852517 (50 iterations in 9.67 seconds)
-    ## Iteration 600: error is 3.761633 (50 iterations in 9.75 seconds)
-    ## Iteration 650: error is 3.684040 (50 iterations in 9.74 seconds)
-    ## Iteration 700: error is 3.616261 (50 iterations in 9.71 seconds)
-    ## Iteration 750: error is 3.556745 (50 iterations in 9.80 seconds)
-    ## Iteration 800: error is 3.504050 (50 iterations in 9.73 seconds)
-    ## Iteration 850: error is 3.456746 (50 iterations in 9.68 seconds)
-    ## Iteration 900: error is 3.413664 (50 iterations in 9.65 seconds)
-    ## Iteration 950: error is 3.374273 (50 iterations in 9.86 seconds)
-    ## Iteration 1000: error is 3.337869 (50 iterations in 9.72 seconds)
-    ## Fitting performed in 204.47 seconds.
+    ## Iteration 50: error is 118.896811 (50 iterations in 12.49 seconds)
+    ## Iteration 100: error is 118.896811 (50 iterations in 14.80 seconds)
+    ## Iteration 150: error is 118.892813 (50 iterations in 13.63 seconds)
+    ## Iteration 200: error is 109.521719 (50 iterations in 11.31 seconds)
+    ## Iteration 250: error is 103.548045 (50 iterations in 14.23 seconds)
+    ## Iteration 300: error is 4.921023 (50 iterations in 13.51 seconds)
+    ## Iteration 350: error is 4.512190 (50 iterations in 12.71 seconds)
+    ## Iteration 400: error is 4.269992 (50 iterations in 11.26 seconds)
+    ## Iteration 450: error is 4.096157 (50 iterations in 11.59 seconds)
+    ## Iteration 500: error is 3.961477 (50 iterations in 11.58 seconds)
+    ## Iteration 550: error is 3.852517 (50 iterations in 11.44 seconds)
+    ## Iteration 600: error is 3.761633 (50 iterations in 11.00 seconds)
+    ## Iteration 650: error is 3.684040 (50 iterations in 11.11 seconds)
+    ## Iteration 700: error is 3.616261 (50 iterations in 11.57 seconds)
+    ## Iteration 750: error is 3.556745 (50 iterations in 11.75 seconds)
+    ## Iteration 800: error is 3.504050 (50 iterations in 12.25 seconds)
+    ## Iteration 850: error is 3.456746 (50 iterations in 11.77 seconds)
+    ## Iteration 900: error is 3.413664 (50 iterations in 11.03 seconds)
+    ## Iteration 950: error is 3.374273 (50 iterations in 11.31 seconds)
+    ## Iteration 1000: error is 3.337869 (50 iterations in 10.92 seconds)
+    ## Fitting performed in 241.27 seconds.
 
 ``` r
 dim(train_images)
