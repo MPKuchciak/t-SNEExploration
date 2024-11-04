@@ -110,7 +110,19 @@ probability that $x_i$ would pick $x_j$ as its neighbor.
 
 $$ p_{j|i} = 2 $$ 
 
+For each pair of points
 $$ p_{j|i} $$ 
+compute the conditional
+
+For each pair of points $$ p_{j|i} $$ compute the conditional 
+
+For each pair of points $$ p_{j|i} $$ 
+
+compute the conditional
+
+For each pair of points 
+$$ p_{j|i} $$ 
+compute the conditional
 
 $ p_{j|i} $
 
