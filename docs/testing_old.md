@@ -1,3 +1,11 @@
+---
+layout: default
+title: "T-SNE: A Dimensionality Reduction Technique Exploration"
+---
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 T-SNE: A Dimensionality Reduction Technique Exploration
 ================
 Maciej Kuchciak
@@ -80,7 +88,7 @@ images of 28x28 pixels, MNIST is a challenging dataset for visualization
 and pattern recognition, making it ideal for t-SNE.
 
 <figure>
-<img src="../images/mnist_animation_enlarged.gif"
+<img src="images/mnist_animation_enlarged.gif"
 alt="MNIST sample of images" />
 <figcaption aria-hidden="true">MNIST sample of images</figcaption>
 </figure>
@@ -101,15 +109,13 @@ data for visualization purposes.
 
 #### **Step 1**: Compute Pairwise Similarities in High-Dimensional Space
 
-For each pair of points $x_i$ and $x_j$, compute the conditional
-probability $p_{j|i}$ that $x_i$ would pick $x_j$ as its neighbor.
-
-$$
+For each pair of points \( x_i \) and \( x_j \), compute the conditional probability \( p_{j|i} \) that \( x_i \) would pick \( x_j \) as its neighbor.
+&&
 p_{j|i} = \frac{\exp(-\|x_i - x_j\|^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\|x_i - x_k\|^2 / 2\sigma_i^2)}
-$$
+&&
 
-- $x_i, x_j$: Data points in the original high-dimensional space.
-- $p_{j|i}$: Conditional probability that point $x_i$ would pick $x_j$
+- & x_i, x_j &: Data points in the original high-dimensional space.
+- \( p_{j|i} \): Conditional probability that point $x_i$ would pick $x_j$
   as its neighbor, based on their distance and the density of points
   around $x_i$.
 - $\sigma_i$: The standard deviation of the Gaussian distribution
@@ -172,7 +178,7 @@ $$
   the crowding problem by effectively spreading out points that are
   moderately far apart in the high-dimensional space.
 
-- $\log \frac{p_{ij}}{q_{ij}}$: The logarithm of the ratio of $p_{ij}$
+- $ \log \frac{p_{ij}}{q_{ij}} $: The logarithm of the ratio of $ p_{ij} $
   to $q_{ij}$, contributing to the KL divergence calculation. When
   $p_{ij}$ closely matches $q_{ij}$, their ratio approaches 1, and the
   logarithm approaches 0, indicating little divergence. Large
