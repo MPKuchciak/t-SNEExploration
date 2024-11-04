@@ -10,8 +10,6 @@ output:
     fig_width: 7
     fig_height: 5
     dev: 'png'
-    includes:
-      in_header: mathjax_header.html
 ---
 
 ___
