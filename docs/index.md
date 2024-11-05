@@ -85,8 +85,6 @@ alt="MNIST sample of images" />
 <figcaption aria-hidden="true">MNIST sample of images</figcaption>
 </figure>
 
-------------------------------------------------------------------------
-
 ### Understanding t-SNE
 
 t-Distributed Stochastic Neighbor Embedding (t-SNE) is a machine
@@ -94,8 +92,6 @@ learning algorithm designed for visualizing high-dimensional data in a
 low-dimensional space of two or three dimensions. It is a non-linear
 dimensionality reduction technique that works well for embedding complex
 data for visualization purposes.
-
-------------------------------------------------------------------------
 
 ### Step-by-Step t-SNE Process
 
@@ -193,8 +189,6 @@ faithfully represent the original data’s structure. This optimization
 process is typically achieved through gradient descent, iteratively
 adjusting the points’ positions to reduce the KL divergence until a
 stable, low-dimensional representation of the data is found.
-
-------------------------------------------------------------------------
 
 ### Application of t-SNE
 
@@ -517,8 +511,6 @@ the data accurately.
 visualizations with more iterations, indicating that the data points
 have not been spread out as much. This compact representation can hide
 nuances and make it difficult to discern the structure of the data.
-
-------------------------------------------------------------------------
 
 #### Summary
 
