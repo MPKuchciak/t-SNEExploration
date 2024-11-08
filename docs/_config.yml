@@ -29,3 +29,4 @@ include:
   - docs
   - Dimension_reduction_files/figure-gfm
   - images
+  - docs/assets/css/style.css   

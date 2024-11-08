@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="assets/css/style.css">
 T-SNE: A Dimensionality Reduction Technique Exploration
 ================
 Maciej Kuchciak
