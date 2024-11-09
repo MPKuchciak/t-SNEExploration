@@ -1,10 +1,3 @@
-<style>
-/* Hide duplicate title */
-.site-title {
-    display: none;
-}
-</style>
-T-SNE: A Dimensionality Reduction Technique Exploration
 ================
 Maciej Kuchciak
 January 2024
