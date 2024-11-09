@@ -1,5 +1,5 @@
-title: ""
-description: "Exploring the MNIST dataset using t-SNE"
+title: "T-SNE: A Dimensionality Reduction Technique Exploration"
+description: "Exploring t-SNE using the MNIST dataset"
 markdown: kramdown
 kramdown:
   input: GFM
