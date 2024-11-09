@@ -25,20 +25,23 @@ Below is an animation of the MNIST dataset elements:
 
 ```bash
 t-SNEExploration/
-├── README.md                     # Project overview
-├── LICENSE                       # License file
-├── .gitignore                    # Files to ignore in version control
-├── .gitattributes                # Git attributes
-├── t-SNEExploration.Rproj        # R project file
-├── src/                          # RMarkdown file and generated outputs
-│   ├── Dimension_reduction.Rmd   # RMarkdown analysis file
-│   ├── Dimension_reduction.md    # Markdown output
-│   ├── Dimension_reduction_files/ # Auto-generated figures from RMarkdown
-│   └── HTML_version/             # (Optional) HTML outputs
-├── docs/                         # GitHub Pages website content
-│   └── default.html              # Default layout for site
-├── images/                       # Additional images (plots, figures, etc.)
-│   └── mnist_animation_enlarged.gifs
+├── README.md                     # Project overview and instructions
+├── LICENSE                       # License file for the project
+├── .gitignore                    # List of files/folders ignored in version control
+├── .gitattributes                # Git settings for line endings and other attributes
+├── t-SNEExploration.Rproj        # R project file for easy setup in RStudio
+├── src/                          # Source files for analysis
+│   ├── Dimension_reduction.Rmd   # Main RMarkdown file for t-SNE analysis
+│   ├── Dimension_reduction.md    # Generated Markdown output (without adjustments for github pages look)
+│   ├── Dimension_reduction_files/ # Auto-generated figures and images from RMarkdown
+│   └── HTML_version/             # (Optional) HTML outputs from RMarkdown
+├── docs/                         # GitHub Pages website files
+│   ├── index.md                  # Main page for GitHub Pages site (adjustments made to Dimension_reduction.md file)
+│   ├── _config.yml               # Jekyll configuration for GitHub Pages
+│   ├── Dimension_reduction_files/ # Auto-generated figures and images from RMarkdown
+│   └── images/                   # Additional images for the website
+├── images/                       # Extra project images (plots, figures, etc.)
+│   └── mnist_animation_enlarged.gif # Animation illustrating the dataset
 ```
 
 ## Getting Started
