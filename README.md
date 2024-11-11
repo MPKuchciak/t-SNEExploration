@@ -32,16 +32,20 @@ t-SNEExploration/
 ├── t-SNEExploration.Rproj        # R project file for easy setup in RStudio
 ├── src/                          # Source files for analysis
 │   ├── Dimension_reduction.Rmd   # Main RMarkdown file for t-SNE analysis
-│   ├── Dimension_reduction.md    # Generated Markdown output (without adjustments for github pages look)
+│   ├── Dimension_reduction.md    # Generated Markdown output (without adjustments for GitHub Pages)
 │   ├── Dimension_reduction_files/ # Auto-generated figures and images from RMarkdown
-│   └── HTML_version/             # (Optional) HTML outputs from RMarkdown
+│   ├── HTML_version/             # (Optional) HTML outputs from RMarkdown
+│   └── R.File/                   # Folder for R script outputs from purling RMarkdown
+│       ├── main.R                # Script to purl Dimension_reduction.Rmd into R code
+│       └── Dimension_reduction.R # Auto-generated R code extracted from Dimension_reduction.Rmd
 ├── docs/                         # GitHub Pages website files
-│   ├── index.md                  # Main page for GitHub Pages site (adjustments made to Dimension_reduction.md file)
+│   ├── index.md                  # Main page for GitHub Pages site (based on Dimension_reduction.md)
 │   ├── _config.yml               # Jekyll configuration for GitHub Pages
-│   ├── Dimension_reduction_files/ # Auto-generated figures and images from RMarkdown
+│   ├── Dimension_reduction_files/ # Auto-generated figures and images for GitHub Pages
 │   └── images/                   # Additional images for the website
 ├── images/                       # Extra project images (plots, figures, etc.)
 │   └── mnist_animation_enlarged.gif # Animation illustrating the dataset
+
 ```
 
 ## Getting Started
