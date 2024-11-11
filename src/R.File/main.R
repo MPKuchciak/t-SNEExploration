@@ -1,4 +1,3 @@
-getwd()
 # 1. PURLING Rmd files into R files ============================================
 # In this section we can transform the Rmd files into R files. 
 # An important part of the transformation is the `documentation` parameter.
