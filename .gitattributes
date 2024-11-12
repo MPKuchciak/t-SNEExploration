@@ -13,3 +13,5 @@
 # Treat .Rmd and .md files as R language for GitHub stats
 *.Rmd linguist-language=R
 *.md linguist-language=R
+
+*.html linguist-vendored
