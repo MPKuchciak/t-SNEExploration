@@ -1,0 +1,15 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Ensure LF for R scripts
+*.R text eol=lf
+
+# Ensure LF for markdown files
+*.md text eol=lf
+
+# Ensure LF for HTML files
+*.html text eol=lf
+
+# Treat .Rmd and .md files as R language for GitHub stats
+*.Rmd linguist-language=R
+*.md linguist-language=R
