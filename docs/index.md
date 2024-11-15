@@ -530,7 +530,7 @@ Decreasing iterations below a certain threshold results in an unstable
 and unclear visualization, underscoring the need for a sufficient number
 of iterations for the t-SNE algorithm to converge.
 
-------------------------------------------------------------------------
+
 
 ## Technical Insights
 
