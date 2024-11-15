@@ -292,7 +292,6 @@ visualization, a sparsity value of 0.002086 is typical for
 high-dimensional datasets and reflects the efficient computational
 strategy used by the algorithm.
 
-------------------------------------------------------------------------
 
 #### Hyperparameter Tuning in t-SNE
 
